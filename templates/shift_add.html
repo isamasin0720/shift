@@ -1,0 +1,25 @@
+{% extends "shift_layout.html" %}
+{% block content %}
+
+<h3>施設情報を追加する</h3>
+<h4>*数字は半角で入力</h4>
+
+<form action="/shift_insert" method="POST">
+    <div>
+        <p>施設名：<input type="varchar" name="homename" value={{user.homename}}></p>
+        <p>施設タイプ：<input type="varchar" name="hometype"  value={{user.hometype}}></p>
+        <p>早日遅勤務時間：<input type="integer" name="day_worktime"  value={{user.day_worktime}}>
+        早日遅シフト人数：<input type="integer" name="day_shiftnumber" value={{user.day_shiftnumber}}></p>
+        <p>夜勤勤務時間：<input type="integer" name="night_worktime"  value={{user.night_worktime}}>
+        夜勤シフト人数：<input type="integer" name="night_shiftnumber" value={{user.night_shiftnumber}}></p>
+        <p>パート勤務時間：<input type="integer" name="part_worktime"  value={{user.part_worktime}}>
+        パートシフト人数：<input type="integer" name="part_shiftnumber" value={{user.part_shiftnumber}}></p>
+        <p>看護師勤務時間：<input type="integer" name="nurse_worktime"  value={{user.nurse_worktime}}>
+        看護師シフト人数：<input type="integer" name="nurse_shiftnumber" value={{user.nurse_shiftnumber}}></p>
+        <p>要介護利用者数：<input type="integer" name="must_carenumber"  value={{user.must_carenumber}}></p>
+        <p><input type="submit" name="" value="追加"></p>
+    </div>
+</form>
+<p><button onclick="history.back()">戻る</button></p>
+<p><button><a href="/shift_profile">一覧表示</a></button></p>
+{% endblock %}

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>シフト分析</title>
+        <meta name="description" content="シフト情報から、人員配置を換算します">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <h1>シフト分析</h1>
+
+        <div class="container">
+            <div class="item">
+                <img src="KM-logo.png" alt="コニカミノルタのロゴ">
+            </div>
+        </div>
+
+        <p>使い方</p>
+        <ol>
+            <li>施設名を入力します</li>
+            <li>早日遅/夜勤/パート/看護の勤務時間と人数を入力します</li>
+            <li>要介護利用者数を入力して計算開始をクリック</li>
+        </ol>
+
+        施設名：<input type="text" placeholder="(例)小西苑">
+        
+        <p>施設タイプ：
+            <input type="radio" name="house type" value="特養" checked>特別養護老人ホーム
+            <input type="radio" name="house type" value="介護付き有老">介護付き有料老人ホーム
+            <input type="radio" name="house type" value="住宅型有老">住宅型有料老人ホーム
+            <input type="radio" name="house type" value="SS">ショートステイ
+        <p>
+        
+        <p>早日遅
+            勤務時間
+            <select name="worktime">
+                <option value="8">8</option>
+                <option value="16">16</option>
+            </select>
+            シフト人数
+            <select name="countperson">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </p>
+
+        <p>夜勤
+            勤務時間
+            <select name="worktime">
+                <option value="8">8</option>
+                <option value="16">16</option>
+            </select>
+            シフト人数
+            <select name="countperson">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </p>
+
+        <p>パート
+            勤務時間
+            <select name="worktime">
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+            </select>
+            シフト人数
+            <select name="countperson">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </p>
+
+        <p>看護師
+            勤務時間
+            <select name="worktime">
+                <option value="8">8</option>
+                <option value="16">16</option>
+            </select>
+            シフト人数
+            <select name="countperson">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </p>
+
+        <p>要介護利用者数：<input type="text" placeholder="※半角数字で入力(例)41"></p>
+        
+        <p><input type="submit" value="計算開始"</p>
+            
+        <p>
+            ★「HitomeQ ケアサポート(旧ケアサポートソリューション)」詳細は<a href="https://hitomeq.konicaminolta.com">こちら</a>★
+        </p>
+    </body>
+
+</html>

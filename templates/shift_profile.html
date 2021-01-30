@@ -1,0 +1,54 @@
+{% extends "shift_layout.html" %}
+{% block content %}
+
+<h3>シフト分析 データ一覧</h3>
+<p><button><a href="/shift_add">新規追加</a></button></p>
+
+{% for data in user %}
+    <table border="1">
+        
+        <tr>
+            <th>施設名</th>
+            <th>施設タイプ</th>
+            <th>早日遅勤務時間</th>
+            <th>早日遅シフト人数</th>
+            <th>夜勤勤務時間</th>
+            <th>夜勤シフト人数</th>
+            <th>パート勤務時間</th>
+            <th>パートシフト人数</th>
+            <th>看護師勤務時間</th>
+            <th>看護師シフト人数</th>
+            <th>要介護利用者数</th>
+        </tr>
+        <tr>
+            <td>{{ data.homename }}</td>
+            <td>{{ data.hometype }}</td>
+            <td>{{ data.day_worktime }}</td>
+            <td>{{ data.day_shiftnumber }}</td>
+            <td>{{ data.night_worktime }}</td>
+            <td>{{ data.night_shiftnumber }}</td>
+            <td>{{ data.part_worktime }}</td>
+            <td>{{ data.part_shiftnumber }}</td>
+            <td>{{ data.nurse_worktime }}</td>
+            <td>{{ data.nurse_shiftnumber }}</td>
+            <td>{{ data.must_carenumber }}</td>
+        </tr>
+        
+    </table>
+
+    <table border="1">
+
+        <tr>
+            <th>人員配置人数</th>
+        </tr>
+        <tr>
+            <td>{{ data.arrange }}　</td>
+        </tr>
+
+    </table>
+ <a href="/shift_edit/{{data.id}}">シフト情報を編集する</a>
+{% endfor %}
+
+
+
+{% endblock %}
