@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "builds": [{ "src": "shift.py", "use": "@sisp/python-wsgi" }],
+  "routes": [{ "src": "/.*", "dest": "/" }]
+}
