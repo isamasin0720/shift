@@ -48,7 +48,7 @@ def update_profile(prof):
             nurse_worktime={prof['nurse_worktime']},
             nurse_shiftnumber={prof['nurse_shiftnumber']},
             must_carenumber={prof['must_carenumber']}
-        WHERE id= 1
+        WHERE id={prof['id']}
         '''
     )
     conn.commit()
@@ -98,6 +98,7 @@ def search_prof(prof_list, id):
         if x['id'] == id:
             result = x
             break
+        
     return result
 
 #人員配置人数を計算する
