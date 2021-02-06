@@ -142,6 +142,10 @@ def add_arrange(prof_list):
         )
     return result_arranges
      
+@app.route('/')
+def top():
+    name = "Hello World"
+    return name
 
 #一覧表示画面
 @app.route('/shift_profile')
