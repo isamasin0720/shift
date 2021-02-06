@@ -142,18 +142,17 @@ def add_arrange(prof_list):
             result_arrange
         )
     return result_arranges
-     
+
+
 @app.route('/')
 def top():
-    name = "Hello World"
-    return name
+    return redirect(url_for('profile'))
 
 #一覧表示画面
 @app.route('/shift_profile')
 def profile():
     prof_list = get_profile()
     prof_list = add_arrange(prof_list)
-    print(prof_list)
     return render_template('shift_profile.html', title='シフト情報', user=prof_list)
 
 #追加画面
