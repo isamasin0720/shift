@@ -1,6 +1,6 @@
 {% extends "shift_layout.html" %}
 {% block content %}
-
+<h1>※組織外への展開は控え、データの取扱いはご注意ください</h1>
 <h3>シフト分析 データ一覧</h3>
 <p><button><a href="/shift_add">新規追加</a></button></p>
 
@@ -8,7 +8,7 @@
     <table border="1">
         
         <tr>
-            <th>施設名</th>
+            <!-- <th>施設名</th> -->
             <th>施設タイプ</th>
             <th>早日遅勤務時間</th>
             <th>早日遅シフト人数</th>
@@ -21,7 +21,7 @@
             <th>要介護利用者数</th>
         </tr>
         <tr>
-            <td>{{ data.homename }}</td>
+            <!--<td>{{ data.homename }}</td> -->
             <td>{{ data.hometype }}</td>
             <td>{{ data.day_worktime }}</td>
             <td>{{ data.day_shiftnumber }}</td>
