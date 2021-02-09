@@ -13,7 +13,7 @@ def get_profile():
     for i in c.execute('select * from carehomes'):
         prof_list.append(
             {'id':i[0],
-            'homename':i[1],
+            #'homename':i[1],
             'hometype':i[2],
             'day_worktime':i[3],
             'day_shiftnumber':i[4],
@@ -37,7 +37,6 @@ def update_profile(prof):
         f'''
         update carehomes 
         set 
-            homename='{prof['homename']}',
             hometype='{prof['hometype']}',
             day_worktime={prof['day_worktime']},
             day_shiftnumber={prof['day_shiftnumber']},
@@ -61,7 +60,6 @@ def insert_profile(prof):
     c.execute(
         f'''
         insert into carehomes(
-            homename, 
             hometype,
             day_worktime,
             day_shiftnumber,
@@ -74,7 +72,6 @@ def insert_profile(prof):
             must_carenumber
         )
         values (
-            '{prof['homename']}',
             '{prof['hometype']}',
             {prof['day_worktime']},
             {prof['day_shiftnumber']},
@@ -175,7 +172,7 @@ def update(id):
     prof_list = get_profile()
     prof_dict = search_prof(prof_list, id)
     #prof_dictの値を変更
-    prof_dict['homename'] = request.form['homename']
+    #prof_dict['homename'] = request.form['homename']
     prof_dict['hometype'] = request.form['hometype']
     prof_dict['day_worktime'] = request.form['day_worktime']
     prof_dict['day_shiftnumber'] = request.form['day_shiftnumber']
@@ -196,7 +193,7 @@ def update(id):
 def insert():
     prof_dict = {}
     #prof_dictの値を追加
-    prof_dict['homename'] = request.form['homename']
+    #prof_dict['homename'] = request.form['homename']
     prof_dict['hometype'] = request.form['hometype']
     prof_dict['day_worktime'] = request.form['day_worktime']
     prof_dict['day_shiftnumber'] = request.form['day_shiftnumber']
