@@ -1,8 +1,9 @@
 {% extends "shift_layout.html" %}
 {% block content %}
 <h1>※組織外への展開は控え、データの取扱いはご注意ください</h1>
-<h3>シフト分析 データ一覧</h3>
+<h3>シフト分析</h3>
 <p><button><a href="/shift_add">新規追加</a></button></p>
+<p><button><a href="/yakinkasan_profile">夜勤加算計算</a></button></p>
 
 {% for data in user %}
     <table class="table">
@@ -38,7 +39,7 @@
 
     <table class="table">
 
-        <tr style="background:#696969">
+        <tr style="background:#696969; width:100px;">
             <th><font color="white">人員配置人数</font></th>
         </tr>
         <tr>

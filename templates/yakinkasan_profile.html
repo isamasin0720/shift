@@ -1,0 +1,218 @@
+
+<h3>夜勤職員配置加算</h3>
+<p><button><a href="/yakinkasan_XXX"></a>定型入力</button></p>
+
+<script type="text/javascript">
+
+    function keisan(){
+        // console.log('start');
+        // console.log(document.form1);
+        // console.log(document.form1.night_workend.selectedIndex);
+        
+        //夜勤総時間
+        let night_sum = ((Number(document.form1.night_workend[document.form1.night_workend.selectedIndex].value) + 24.0) - 
+                Number(document.form1.night_workstart[document.form1.night_workstart.selectedIndex].value)) * 
+                Number(document.form1.night_number[document.form1.night_number.selectedIndex].value);
+               document.form1.field1.value = night_sum; //夜勤総時間を表示
+
+        //早番夜間総時間
+        let early_sum = (Number(document.form1.night_workend[document.form1.night_workend.selectedIndex].value) - 
+                Number(document.form1.early_workstart[document.form1.early_workstart.selectedIndex].value)) *
+                Number(document.form1.early_number[document.form1.early_number.selectedIndex].value);
+        //遅番夜間総時間
+        let late_sum = (Number(document.form1.late_workend[document.form1.late_workend.selectedIndex].value) - 
+                Number(document.form1.night_workstart[document.form1.night_workstart.selectedIndex].value)) * 
+                Number(document.form1.late_number[document.form1.late_number.selectedIndex].value);
+
+        //夜間配置人数
+        let night_assignedNumber = (Number(night_sum) + Number(early_sum) + Number(late_sum)) / 
+                ((Number(document.form1.night_workend[document.form1.night_workend.selectedIndex].value) + 24) - 
+                Number(document.form1.night_workstart[document.form1.night_workstart.selectedIndex].value));
+                document.form1.field2.value = Math.round(night_assignedNumber * 10) / 10; //夜間配置人数を表示
+
+        //人数の差
+        let defference_number = (Number(night_assignedNumber) -
+                (Number(document.getElementById( "target" ).value) / 2 + 0.6)) *
+                ((Number(document.form1.night_workend[document.form1.night_workend.selectedIndex].value) + 24.0) - 
+                Number(document.form1.night_workstart[document.form1.night_workstart.selectedIndex].value)) * 7 / 40;
+                document.form1.field3.value = Math.round(defference_number * 100) / 100; //人数の差を表示
+    }
+</script>
+
+<form action="#" name="form1">
+        1日あたりの夜間配置人数 <input type="number" name="field2" size="3" value=""> 人
+        <p>夜勤加算取得に必要な人数との差<input type="number" name="field3" size="3" value=""> 人</p>
+    
+    <table class="table">
+
+        <div>
+            <p>【施設情報】</p>
+            <!-- <p>施設タイプ</p>
+            <input type="radio" name="hometype" value="unit">ユニット型
+            <input type="radio" name="hometype" value="normal">従来型 -->
+            <p>床数<input type="number" name="carenumber" size="4" value=""></p>
+            <p>ユニット数<input type="number" name="unitnumber" id="target" size="4" value="" onchange="keisan()"></p>
+        </div>
+
+    </table>
+
+
+    <table class="table">
+        <div>
+            <p>【夜勤】</p>
+            <p>夜勤開始時刻
+                <select name="night_workstart" onchange="keisan()">
+                    <option>15.5</option>
+                    <option>16.0</option>
+                    <option>16.5</option>
+                    <option>17.0</option>
+                    <option>17.5</option>
+                    <option>18.0</option>
+                </select>
+            夜勤終了時刻
+            <select name="night_workend" onchange="keisan()">
+                    <option>7.5</option>
+                    <option>8.0</option>
+                    <option>8.5</option>
+                    <option>9.0</option>
+                    <option>9.5</option>
+                    <option>10.0</option>
+                </select>
+            </p>
+            <p>夜勤人数
+                <select name="night_number" onchange="keisan()">          
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </p>
+            <!-- <p>夜勤休憩時間　※夜勤の労働時間(16時間)に含まれない休憩時間がある場合</p>
+            <p><select name="night_breaktime">
+            <option value="0hour">0.0</option>
+            <option value="1hour">1.0</option>
+            <option value="2hour">2.0</option>
+            </select></p> -->
+        </div>
+    </table>
+
+    <input type="number" name="field1" size="3" value=""> 時間
+    
+    <table class="table">
+
+
+        <div>
+            <p>【日勤】</p>
+            <p>早番開始時刻
+                <select name="early_workstart" onChange="keisan()">
+                    <option>5.5</option>
+                    <option>6.0</option>
+                    <option>6.5</option>
+                    <option>7.0</option>
+                    <option>7.5</option>
+                    <option>8.0</option>
+                </select>
+                早番人数
+                <select name="early_number" onChange="keisan()">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </p>
+            <p>遅番終了時刻
+                <select name="late_workend" onChange="keisan()">
+                    <option>18.5</option>
+                    <option>19.0</option>
+                    <option>19.5</option>
+                    <option>20.0</option>
+                    <option>20.5</option>
+                    <option>21.0</option>             
+                </select>
+                遅番人数
+                <select name="late_number" onchange="keisan()">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </p>
+            <!-- <p>看護開始時刻<input type="integer" name="nurse_workstart" value=10.0>
+            看護終了時刻<input type="integer" name="nurse_workend" value=19.0>
+            看護人数<select name="nurse_number">
+            <option value="One">1</option>
+            <option value="Two">2</option>
+            <option value="Three">3</option>
+            <option value="Four">4</option>
+            <option value="Five">5</option>
+            </select></p> -->
+        </div>
+    </table>
+
+    <table class="table">
+        <div>
+            <p>【結果】</p>
+            <p>夜間配置人数 5.25</p>
+            <p>↓最低配置(+0.6)にした場合の配置人数差分</p>
+            <p>5.25 - 4.6 = 0.65</p>
+            <p>↓1日あたり削減できる夜間勤務時間</p>
+            <p>0.65 × 16 = 10.4</p>
+            <p>↓1週間の合計</p>
+            <p>10.4 × 7 = 72.8</p>
+            <p>↓減らせる人数</p>
+            <p>72.8 ÷ 40 = 1.82</p>
+        </div>
+    </table>
+</form>
+
+<style type="text/css">
+th {
+    margin : 5px;
+    padding : 5px;
+    color : white;
+    background-color :navy;
+}
+td {
+    margin : 5px;
+    padding : 5px;
+}
+</style>
+
+<script>
+    document.write("<p> 計算表(月) </p>");
+
+    number_list = [
+        ["-0.2", "120,000", "144,000", "168,000"],
+        ["-0.4", "240,000", "288,000", "336,000"]
+    ];
+    document.write("<table border=1>");
+    document.write("<tr><th>夜間配置</th><th>1250</th><th>1500</th><th>1750</th></tr>")
+    for (i = 0; i < number_list.length; i++)
+    {
+        document.write("</tr>");
+        document.write("<td>" + number_list[i][0] + "</td>");
+        document.write("<td>" + number_list[i][1] + "</td>");
+        document.write("<td>" + number_list[i][2] + "</td>");
+        document.write("<td>" + number_list[i][3] + "</td>");
+        document.write("</tr>");
+    }
+    document.write("</table>");
+</script>
+
+<input type="text">
+<button>実行</button>
+<p>結果表示</p>
+<script>
+    let ipt = document.querySelector('input');
+    let btn = document.querySelector('button');
+    let elem = document.querySelector('p');
+    btn.addEventListener('click', () => {
+        elem.innerText = ipt.value;
+    } );
+</script>
