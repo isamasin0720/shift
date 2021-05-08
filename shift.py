@@ -146,6 +146,11 @@ def add_arrange(prof_list):
 def top():
     return redirect(url_for('profile'))
 
+# 夜勤配置加算計算画面
+@app.route('/yakinkasan_profile')
+def yakinkasan():
+    return render_template('yakinkasan_profile.html', title='夜勤配置加算')
+
 #一覧表示画面
 @app.route('/shift_profile')
 def profile():
