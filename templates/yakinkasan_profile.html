@@ -157,7 +157,7 @@
 
     <table class="table">
         <div>
-            <p>【結果】</p>
+            <p>【計算例】</p>
             <p>夜間配置人数 5.25</p>
             <p>↓最低配置(+0.6)にした場合の配置人数差分</p>
             <p>5.25 - 4.6 = 0.65</p>
@@ -170,49 +170,3 @@
         </div>
     </table>
 </form>
-
-<style type="text/css">
-th {
-    margin : 5px;
-    padding : 5px;
-    color : white;
-    background-color :navy;
-}
-td {
-    margin : 5px;
-    padding : 5px;
-}
-</style>
-
-<script>
-    document.write("<p> 計算表(月) </p>");
-
-    number_list = [
-        ["-0.2", "120,000", "144,000", "168,000"],
-        ["-0.4", "240,000", "288,000", "336,000"]
-    ];
-    document.write("<table border=1>");
-    document.write("<tr><th>夜間配置</th><th>1250</th><th>1500</th><th>1750</th></tr>")
-    for (i = 0; i < number_list.length; i++)
-    {
-        document.write("</tr>");
-        document.write("<td>" + number_list[i][0] + "</td>");
-        document.write("<td>" + number_list[i][1] + "</td>");
-        document.write("<td>" + number_list[i][2] + "</td>");
-        document.write("<td>" + number_list[i][3] + "</td>");
-        document.write("</tr>");
-    }
-    document.write("</table>");
-</script>
-
-<input type="text">
-<button>実行</button>
-<p>結果表示</p>
-<script>
-    let ipt = document.querySelector('input');
-    let btn = document.querySelector('button');
-    let elem = document.querySelector('p');
-    btn.addEventListener('click', () => {
-        elem.innerText = ipt.value;
-    } );
-</script>
