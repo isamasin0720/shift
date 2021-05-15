@@ -144,32 +144,37 @@ def add_arrange(prof_list):
 
 @app.route('/')
 def top():
-    return redirect(url_for('profile'))
+    return redirect(url_for('toppage'))
+
+#トップページへ
+@app.route('/analysis_toppage')
+def toppage():
+    return render_template('analysis_toppage.html', title='トップページ')
 
 # 夜勤配置加算計算画面
 @app.route('/yakinkasan_profile')
 def yakinkasan():
-    return render_template('yakinkasan_profile.html', title='夜勤配置加算')
+    return render_template('yakinkasan_profile.html', title='夜勤加算計算')
 
 #一覧表示画面
 @app.route('/shift_profile')
 def profile():
     prof_list = get_profile()
     prof_list = add_arrange(prof_list)
-    return render_template('shift_profile.html', title='シフト情報', user=prof_list)
+    return render_template('shift_profile.html', title='人員配置計算一覧', user=prof_list)
 
 #追加画面
 @app.route('/shift_add')
 def add():
     prof_dict = {}
-    return render_template('shift_add.html', title='シフト追加', user=prof_dict)
+    return render_template('shift_add.html', title='人員配置計算追加', user=prof_dict)
 
 #編集画面
 @app.route('/shift_edit/<int:id>')
 def edit(id):
     prof_list = get_profile()
     prof_dict = search_prof(prof_list, id)
-    return render_template('shift_edit.html', title='シフト分析', user=prof_dict)
+    return render_template('shift_edit.html', title='人員配置計算編集', user=prof_dict)
 
 #上書き
 @app.route('/shift_update/<int:id>', methods=['POST'])
